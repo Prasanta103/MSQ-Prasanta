@@ -1,0 +1,137 @@
+/* General body styles */
+body {
+    background-color: rgb(25, 25, 25);
+    color: azure;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Overall layout for the question list */
+.questions {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Question container style */
+.questions li {
+    margin-bottom: 20px;
+}
+
+/* Options styling */
+.options {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+/* Style for individual options */
+.options li {
+    list-style-type: none;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* Custom radio button styling */
+input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #9be8f1;
+    display: none;
+}
+
+/* Custom radio button circle */
+input[type="radio"] + label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 5px solid #fff;
+    transition: background-color 0.2s, border 0.2s;
+}
+
+/* When the radio button is checked */
+input[type="radio"]:checked + label::before {
+    background-color: #88edff; /* Custom checked background */
+    border-color: #88edff; /* Custom checked border color */
+}
+
+/* Hover effect for the radio button */
+input[type="radio"] + label:hover::before {
+    border-color: #a8ddeb77;
+}
+
+/* Styling for the label */
+input[type="radio"] + label {
+    position: relative;
+    padding-left: 35px; /* Space for the custom circle */
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-block;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+    .questions {
+        padding: 20px 15px;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .questions {
+        padding: 15px;
+        max-width: 100%;
+    }
+    h3 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Highlighting correct answer */
+input[type="radio"]:checked + label[data-correct="true"] {
+    background-color: #28a745;  /* Green background for correct answer */
+    color: white;  /* White text color */
+    text-decoration: underline;
+}
+
+/* Highlighting incorrect answer */
+input[type="radio"]:checked + label[data-correct="false"] {
+    background-color: #dc3545;
+    color: white; 
+}
+
+/* Explanation display when correct */
+input[type="radio"]:checked + label[data-correct="true"] + .description {
+    display: block;
+}
+
+/* Explanation hidden when incorrect */
+input[type="radio"]:checked + label[data-correct="false"] + .description {
+    display: none;
+}
+
+/* Description styling */
+.description {
+    font-size: 12px;
+    color: #ddd;
+    margin-top: 5px;
+    padding: 10px;
+    background-color: #2f2f2f;
+    border-radius: 5px;
+    display: none;
+}
